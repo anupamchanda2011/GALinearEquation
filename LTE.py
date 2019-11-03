@@ -57,18 +57,25 @@ def matingPool(population, selectionResults):
 
 
 def breed(parent1, parent2):
+    child1 = []
+    child2 = []
     child = []
-    mutationIndex1 = random.randrange(0, len(parent1));
-    mutationIndex2 = random.randrange(mutationIndex1, len(parent2));
+    mutationIndex1 = random.randrange(0,len(parent1));
+    mutationIndex2 = random.randrange(mutationIndex1,len(parent2));
 
     for i in range(0, mutationIndex1):
-        child.append(parent1[i]);
+        child1.append(parent1[i])
+        child2.append(parent2[i])
 
-    for i in range(mutationIndex1, mutationIndex2):
-        child.append(parent2[i]);
-
-    for i in range(mutationIndex2, len(parent2)):
-        child.append(parent2[i]);
+    for i in range(mutationIndex1,mutationIndex2):
+        child1.append(parent2[i])
+        child2.append(parent1[i])
+        
+    for i in range(mutationIndex2,len(parent2)):
+        child1.append(parent1[i])
+        child2.append(parent2[i])
+    child.append(child1)
+    child.append(child2)
     return child
 
 
